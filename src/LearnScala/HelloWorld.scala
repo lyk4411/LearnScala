@@ -1,3 +1,5 @@
+package LearnScala
+
 /**
   * Created by lyk on 2019-8-24.
   * Package name: 
