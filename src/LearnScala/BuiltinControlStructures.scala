@@ -20,12 +20,10 @@ object BuiltinControlStructures {
       scala.io.Source.fromFile(file).getLines().toList
 
     def grep(pattern: String) =
-      for (
-        file <- filesHere
-        if file.getName.endsWith(".scala");
-        line <- fileLines(file)
-        if line.trim.matches(pattern)
-      ) println(file + ": " + line.trim)
+      for {
+        file <- filesHere if file.getName.endsWith(".scala")
+        line <- fileLines(file) if line.trim.matches(pattern)
+      } println(file + ": " + line.trim)
 
     grep(".*gcd.*")
   }
