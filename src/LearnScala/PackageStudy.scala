@@ -13,6 +13,9 @@ class PackageStudy {
   // 只能在类内部使用，对象都不能直接使用
 
   def getb(): Int = b
+  def setb(bin:Int): Unit = {
+    b = bin
+  }
 
   var m = PackageStudy.c
   //  var n = PackageStudy.d // 在伴生类中直接访问伴生对象的 private[this] 变量，会报错。
@@ -39,6 +42,11 @@ object PackageStudy {
 
     println(a_obj.m)
     println(a_obj.o)
+    val an_obj = new PackageStudy
+    println("an_obj", an_obj.getb())
+    an_obj.setb(33)
+    println("an_obj", an_obj.getb())
+    println(a_obj.getb())
 
   }
 }
