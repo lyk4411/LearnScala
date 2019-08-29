@@ -33,6 +33,6 @@ object  ex07 {
 
   def main(args: Array[String]) {
     val a = printMultiTable
-    print(a)
+    a
   }
 }
