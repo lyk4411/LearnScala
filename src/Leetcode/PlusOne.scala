@@ -25,15 +25,11 @@ object PlusOne {
   def main(args: Array[String]) {
     var myList = Array(4, 9, 9, 9)
     var myList1 = Array(9, 9, 9, 9)
-    var x = 0
-    for (x <- plusOne(myList)) {
-      print(x)
-      print(',')
-    }
+    var a = for (x <- plusOne(myList)) yield x
+    println("x:" + a.mkString(","))
     println()
-    for (x <- plusOne(myList1)) {
-      print(x)
-      print(',')
-    }
+    var b = for (x <- plusOne(myList1)) yield x
+    println("x:" + b.mkString(","))
+
   }
 }
