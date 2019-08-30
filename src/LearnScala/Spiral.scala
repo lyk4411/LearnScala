@@ -33,7 +33,7 @@ object Spiral {
   def main(args: Array[String]) = {
 
     for (i <- 0 until args.length) {
-      println("number i is: " + i)
+      println("number i is: " + args(i))
       val nSides = args(i).toInt
       println(spiral(nSides, 0))
       println("=====================================================")
