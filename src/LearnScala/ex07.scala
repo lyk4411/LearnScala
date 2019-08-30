@@ -53,7 +53,7 @@ object  ex07 {
   def main(args: Array[String]) {
     printMultiTable
 
-    print("==============================================")
+    println("==============================================")
     val b = multiTable
     print(b)
   }
