@@ -23,5 +23,10 @@ object FileMatcher {
 
   def main(args: Array[String]) {
     filesHere.foreach(println)
+    println("===================")
+    filesEnding("scala").foreach(println)
+    println("===================")
+    filesContaining("matchcase").foreach(println)
+
   }
 }
