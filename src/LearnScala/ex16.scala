@@ -29,5 +29,12 @@ object ex16 {
   def main(args: Array[String]) {
     val res = msort((x: Int, y: Int) => x < y)(List(5, 7, 1, 3))
     println(res)
+    val intSort = msort((x: Int, y: Int) => x < y) _
+    val reverseIntSort = msort((x: Int, y: Int) => x > y) _
+    val mixedInts = List(4, 1, 9, 0, 5, 8, 3, 6, 2, 7)
+    val res1 = intSort(mixedInts)
+    println(res1)
+    val res2 = reverseIntSort(mixedInts)
+    println(res2)
   }
 }
