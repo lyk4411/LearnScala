@@ -41,8 +41,7 @@ class ExprFormatter  {
 //  println(precedence)
 //  println("end of precedence:")
 
-
-  private val unaryPrecedence = opGroups.length
+    private val unaryPrecedence = opGroups.length
     private val fractionPrecedence = -1
 
     private def format(e: Expr, enclPrec: Int): Element =
