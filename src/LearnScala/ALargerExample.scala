@@ -90,4 +90,11 @@ object Express extends App {
   def show(e: Expr):Unit = println(f.format(e)+ "\n\n")
 
   for (e <- Array(e1, e2, e3)) show(e)
+
+  val e4 = BinOp("+",
+    BinOp("*",
+      BinOp("/", Var("x"), Var("y")),
+      Var("z")),
+    Number(1))
+  show(e4)
 }
