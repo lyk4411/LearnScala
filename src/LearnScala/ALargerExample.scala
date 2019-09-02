@@ -94,10 +94,12 @@ object Express extends App {
 
   for (e <- Array(e1, e2, e3)) show(e)
 
-  val e4 = BinOp("+",
-    BinOp("*",
-      BinOp("/", Var("x"), Var("y")),
-      Var("z")),
-    Number(1))
+  val e4 = BinOp("*",
+            BinOp("+",
+              BinOp("*",
+                BinOp("/", UnOp("-", Var("x")), Var("y")),
+                UnOp("-", Var("z"))),
+              Number(1)),
+            Var("k"))
   show(e4)
 }
