@@ -19,17 +19,24 @@ object Expr{
     println("op:" + op)
     val opcopy = op.copy(operator = "-")
     println("opcopy:" + opcopy)
-    simplifyTop(UnOp("-", UnOp("-", Var("x"))))
+    simplifyAll(UnOp("-", UnOp("-", Var("x"))))
     val a = UnOp("-",UnOp("-",UnOp("-",UnOp("-",Var("2")))))
     println("a:" + a)
-    println("simplifyTop a:" + simplifyTop(a))
-    println("simplifyTop of simplifyTop a:" + simplifyTop(simplifyTop(a)))
+    println("simplifyTop a:" + simplifyAll(a))
+    println("simplifyTop of simplifyTop a:" + simplifyAll(simplifyAll(a)))
 
   }
-  def simplifyTop(expr: Expr): Expr = expr match {
-    case UnOp("-", UnOp("-", e))  => e   // Double negation
-    case BinOp("+", e, Number(0)) => e   // Adding zero
-    case BinOp("*", e, Number(1)) => e   // Multiplying by one
+  def simplifyAll(expr: Expr): Expr = expr match {
+    case UnOp("-", UnOp("-", e)) =>
+      simplifyAll(e)   // `-' is its own inverse
+    case BinOp("+", e, Number(0)) =>
+      simplifyAll(e)   // `0' is a neutral element for `+'
+    case BinOp("*", e, Number(1)) =>
+      simplifyAll(e)   // `1' is a neutral element for `*'
+    case UnOp(op, e) =>
+      UnOp(op, simplifyAll(e))
+    case BinOp(op, l, r) =>
+      BinOp(op, simplifyAll(l), simplifyAll(r))
     case _ => expr
   }
 }
