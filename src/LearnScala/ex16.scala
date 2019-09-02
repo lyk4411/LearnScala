@@ -25,6 +25,10 @@ object ex16 {
       merge(msort(less)(ys), msort(less)(zs))
     }
   }
+  def flattenLeft[T](xss: List[List[T]]) =
+    (List[T]() /: xss) (_ ::: _)
+  def reverseLeft[T](xs: List[T]) =
+    (List[T]() /: xs) {(ys, y) => y :: ys}
 
   def main(args: Array[String]) {
     val res = msort((x: Int, y: Int) => x < y)(List(5, 7, 1, 3))
@@ -36,5 +40,31 @@ object ex16 {
     println(res1)
     val res2 = reverseIntSort(mixedInts)
     println(res2)
+
+
+    val words = List("the", "the", "the", "quick", "brown", "fox", "the")
+    println(words map (_.toList))
+    println(words flatMap (_.toList))
+    println(
+    List.range(1, 5) flatMap (
+         i => List.range(1, i) map(j => (i, j))
+      )
+    )
+    println(for (i <- List.range(1, 5); j <- List.range(1, i)) yield (i, j))
+
+    println(words dropWhile (_ startsWith "t"))
+
+
+    println((" " /: words) (_ + " " + _))
+    println(("" /: words) (_ + " " + _))
+    println((words.head /: words.tail)  (_ + " " + _))
+
+    println(flattenLeft(List(List("abc"),List("123"),List("456"),List("789"))))
+    println("a"::List("bc"))
+    println(List("a")::List("bc"))
+    println(List("a"):::List("bc"))
+    println(reverseLeft(words))
+
   }
+
 }
