@@ -23,6 +23,7 @@ object Expr{
     val a = UnOp("-",UnOp("-",UnOp("-",UnOp("-",Var("2")))))
     println("a:" + a)
     println("simplifyTop a:" + simplifyTop(a))
+    println("simplifyTop of simplifyTop a:" + simplifyTop(simplifyTop(a)))
 
   }
   def simplifyTop(expr: Expr): Expr = expr match {
