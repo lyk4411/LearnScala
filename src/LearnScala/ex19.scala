@@ -12,3 +12,5 @@ class ex19 {
     def set(x: T) = { current = x }
   }
 }
+
+
