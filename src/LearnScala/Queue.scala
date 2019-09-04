@@ -54,4 +54,9 @@ object queuetest extends App{
   println(d.head)
   println(d.head)
   println(d.tail.head)
+  println("=========================================")
+  val a1 = Queue[Int](1, 2, 3, 4, 5, 6)
+  println(a1.head)
+  println(a1.tail.head)
+  println(a1.enqueue(7))
 }
