@@ -59,7 +59,7 @@ abstract class CurrencyZone {
         (other.designation)(this.designation)))
 
     private def decimals(n: Long): Int =
-      if (n == 1) 0 else 1 + decimals(n / 10)
+      if (n <= 1) 0 else 1 + decimals(n / 10)
 
     override def toString =
       ((amount.toDouble / CurrencyUnit.amount.toDouble)
@@ -115,6 +115,6 @@ object CHF extends CurrencyZone {
     val amount = cents
   }
   val Cent = make(1)
-  val CHF = make(100)
+  val CHF = make(99)
   val CurrencyUnit = CHF
 }
