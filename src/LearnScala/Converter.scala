@@ -22,6 +22,8 @@ object Converter {
     val a = Japan.Yen from US.Dollar * 100
     println(a)
     val b = Europe.Euro from a
+    val aa = a + a
+    println(aa)
     println(b)
     val c = US.Dollar from b
     println(c)
@@ -29,6 +31,10 @@ object Converter {
     println(d)
     val e = US.Dollar from d
     println(e)
+    val f = e / 2
+    println(f)
+    val g = f / e
+    println(g)
   }
 }
 
@@ -48,9 +54,9 @@ abstract class CurrencyZone {
       make((this.amount * x).toLong)
     def - (that: Currency): Currency =
       make(this.amount - that.amount)
-    def / (that: Double) =
+    def / (that: Double):Currency =
       make((this.amount / that).toLong)
-    def / (that: Currency) =
+    def / (that: Currency):Double =
       this.amount.toDouble / that.amount
 
     def from(other: CurrencyZone#AbstractCurrency): Currency =
