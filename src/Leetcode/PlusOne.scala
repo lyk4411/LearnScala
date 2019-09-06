@@ -14,6 +14,7 @@ object PlusOne {
     digits
       .foldRight(List[Int]()) {
         case (e, acc) =>
+          println("e, acc:", e, acc)
           acc match {
             case x :: xs => add(x, e) ++ xs
             case Nil => add(e, 1)
@@ -24,7 +25,7 @@ object PlusOne {
   }
   def main(args: Array[String]) {
     var myList = Array(4, 9, 9, 9)
-    var myList1 = Array(9, 9, 9, 9)
+    var myList1 = Array(9, 9, 1, 9)
     var a = for (x <- plusOne(myList)) yield x
     println("x:" + a.mkString(","))
     println()
