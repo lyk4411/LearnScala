@@ -27,6 +27,7 @@ object PlusOne {
     var myList = Array(4, 9, 9, 9)
     var myList1 = Array(9, 9, 1, 9)
     var myList2 = Array(9, 9, 9, 9)
+    var myList3 = Array(-1)
     var a = for (x <- plusOne(myList)) yield x
     println("x:" + a.mkString(","))
     println()
@@ -35,5 +36,8 @@ object PlusOne {
     println()
     var c = for (x <- plusOne(myList2)) yield x
     println("x:" + c.mkString(","))
+    println()
+    var d = for (x <- plusOne(myList3)) yield x
+    println("x:" + d.mkString(","))
   }
 }
