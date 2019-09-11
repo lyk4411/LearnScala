@@ -20,11 +20,13 @@ object ex21 {
     println(new Rational(2) + oneHalf)
     println(new Rational(2, 1) + oneHalf)
 
-
+    val myRectangle = 3 x 4
+    println(myRectangle)
   }
-}
 
-case class Rectangle(width: Int, height: Int)
-class RectangleMaker(width: Int) {
-  def x(height: Int) = Rectangle(width, height)
+
+  case class Rectangle(width: Int, height: Int)
+  implicit class RectangleMaker(width: Int) {
+    def x(height: Int) = Rectangle(width, height)
+  }
 }
