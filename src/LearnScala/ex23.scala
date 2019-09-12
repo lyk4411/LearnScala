@@ -16,25 +16,31 @@ object ex23 {
     val julie = Person("Julie", false, lara, bob)
     val persons = List(lara, bob, julie)
 
-    println(
+    println(1,
       persons filter (p => !p.isMale) flatMap (a =>
            (a.children map (c => (a.name, c.name))))
     )
-    println(
+    println(2,
       persons filter (p => !p.isMale)
     )
-    println(
+    println(3,
       persons filter (p => !p.isMale) map (c => c.children )
     )
-    println(
+    println(31,
+      persons filter (p => !p.isMale) map (c => c.children ) flatMap(a => a) map( b => (b.name))
+    )
+    println(4,
+      persons filter (p => !p.isMale) flatMap (c => c.children )
+    )
+    println(5,
       persons filter (p => !p.isMale) flatMap (c => c.children map (a => (c.name, a.name)))
     )
-    println(
+    println(6,
       persons withFilter (p => !p.isMale) flatMap (p =>
            (p.children map (c => (p.name, c.name))))
     )
 
-    println(
+    println(7,
       for (p <- persons; if !p.isMale; c <- p.children)
          yield (p.name, c.name)
     )
