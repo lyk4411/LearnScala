@@ -20,7 +20,15 @@ object ex23 {
       persons filter (p => !p.isMale) flatMap (a =>
            (a.children map (c => (a.name, c.name))))
     )
-
+    println(
+      persons filter (p => !p.isMale)
+    )
+    println(
+      persons filter (p => !p.isMale) map (c => c.children )
+    )
+    println(
+      persons filter (p => !p.isMale) flatMap (c => c.children map (a => (c.name, a.name)))
+    )
     println(
       persons withFilter (p => !p.isMale) flatMap (p =>
            (p.children map (c => (p.name, c.name))))
