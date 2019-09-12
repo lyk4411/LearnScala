@@ -7,6 +7,11 @@ package LearnScala
   */
 
 class ex22 {
+
+  abstract class Fruit
+  class Apple extends Fruit
+  class Orange extends Fruit
+
   def main(args: Array[String]) {
     val apples = new Apple :: Nil
     val fruits = new Orange :: apples
@@ -16,7 +21,3 @@ class ex22 {
     case x :: xs1 => x + 1 :: incAll(xs1)
   }
 }
-
-abstract class Fruit
-class Apple extends Fruit
-class Orange extends Fruit
