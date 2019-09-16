@@ -125,6 +125,45 @@ object ex23 {
 
     for (b <- books if (b.title indexOf "Program") >= 0)
       println(13, b.title)
+
+    val bs2 = for (b1 <- books; b2 <- books if b1 != b2;
+              a1 <- b1.authors; a2 <- b2.authors if a1 == a2)
+       yield a1
+    println(14, bs2)
+
+    def removeDuplicates[A](xs: List[A]): List[A] = {
+         if (xs.isEmpty) xs
+         else
+           xs.head :: removeDuplicates(
+               xs.tail filter (x => x != xs.head)
+           )
+       }
+    println(15, removeDuplicates(bs2))
+    val bs3 = for (b1 <- books; b2 <- books if b1 != b2;
+         a1 <- b1.authors; a2 <- b2.authors if a1 == a2)
+      yield a1
+    println(16, bs3)
+
+    val bs4 = books flatMap (b1 =>
+      books withFilter (b2 => b1 != b2) flatMap (b2 =>
+        b1.authors flatMap (a1 =>
+          b2.authors withFilter (a2 => a1 == a2) map (a2 =>
+            a1))))
+    println(17, bs4)
+    val bs41 = books flatMap (b1 =>
+      books withFilter (b2 => b1 != b2) flatMap (b2 =>
+        b1.authors flatMap (a1 =>
+          b2.authors withFilter (a2 => a1 == a2) map (a2 =>
+            a2))))
+    println(171, bs41)
+    val bs42 = books map (b1 => b1.title)
+    println(172, bs42)
+    val bs43 = books flatMap (b1 => b1.title)
+    println(173, bs43)
+    val temp = for(s <- List("abcdef"); x <- s.split("")) yield x
+    println(174, temp)
+    val temp1 = for(s <- List("abcdef")) yield s
+    println(175, temp1)
   }
 }
 
