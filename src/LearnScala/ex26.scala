@@ -32,6 +32,25 @@ object ex26 {
     println(41, topdom)
     println(42, subdoms)
 
+    import scala.util.matching.Regex
+
+//    val Decimal = new Regex("(-)?(\\d+)(\\.\\d*)?")
+//    val Decimal = new Regex("""(-)?(\d+)(\.\d*)?""")
+    val Decimal = """(-)?(\d+)(\.\d*)?""".r
+    val input = "for -1.0 to 99 by 3"
+    for (s <- Decimal findAllIn input)
+       println(50, s)
+    println(51, Decimal findFirstIn input)
+    println(52, Decimal findPrefixOf input)
+    val Decimal(sign, integerpart, decimalpart) = "-1.23"
+    println(60, sign)
+    println(61, integerpart)
+    println(62, decimalpart)
+
+    for (Decimal(s, i, d) <- Decimal findAllIn input)
+          println(63, "sign: " + s + ", integer: " +  i + ", decimal: " + d)
+
+
   }
 }
 
@@ -69,8 +88,7 @@ object Domain {
     Some(whole.split("\\.").reverse)
 }
 object ExpandedEMail {
-  def unapplySeq(email: String)
-  : Option[(String, Seq[String])] = {
+  def unapplySeq(email: String) : Option[(String, Seq[String])] = {
     val parts = email split "@"
     if (parts.length == 2)
       Some(parts(0), parts(1).split("\\.").reverse)
