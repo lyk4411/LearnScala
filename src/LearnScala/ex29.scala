@@ -57,7 +57,7 @@ object ex29 {
 //
 //  def allCategories = categories
 //}
-
+//
 //  object SimpleBrowser {
 //    def recipesUsing(food: Food) =
 //      SimpleDatabase.allRecipes.filter(recipe =>
@@ -168,11 +168,11 @@ object ex29 {
     val apple1 = SimpleDatabase.foodNamed("Apple").get
 
     for(recipe <- browser.recipesUsing(apple1))
-      println(recipe)
+      println(3, recipe)
 
 
     val category = StudentDatabase.allCategories.head
-    println(3, category)
-  }
+    println(4, category)
 
+  }
 }
