@@ -18,10 +18,10 @@ object LongestConsecutiveSequence {
       })
     }
     val set = list.toSet
-    lazy val maxSeq: Int => Int = memoize {
+    lazy val maxSeq: Int => Int = memoize ({
       case x if set contains (x + 1) => 1 + maxSeq(x + 1)
       case _ => 1
-    }
+    })
     def iterate(acc: Int, xs: List[Int]): Int = xs match {
       case List() => acc
       case x :: xs1 => iterate( Math.max(maxSeq(x), acc), xs1)
@@ -30,7 +30,10 @@ object LongestConsecutiveSequence {
   }
 
   def main(args: Array[String]) {
-    val a = Array(100, 4, 200, 1, 3, 2)
-    println(1, longestConsecutive(a))
+    val a1 = Array(100, 4, 200, 1, 3, 2)
+    val a2 = Array(100, 4, 200, 1, 3, 2, 5, 5, 6)
+
+    println(1, longestConsecutive(a1))
+    println(2, longestConsecutive(a2))
   }
 }
