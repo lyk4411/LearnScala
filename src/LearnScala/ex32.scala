@@ -1,5 +1,7 @@
 package LearnScala
 
+import scala.concurrent.Promise
+
 /**
   * Created by lyk on 2019-9-18.
   * Package name: LearnScala
@@ -43,11 +45,14 @@ object ex32 {
 //      Thread.sleep(100)
 //    }
 //    println(4, result1.value)
-
-    val fut5 = Future { 42 }
-    while(!fut5.isCompleted){
-      Thread.sleep(100)
-    }
+    val p = Promise[Int]()
+    val fut5 = p.future
+    val r = 42
+    p success r
+//    val fut5 = Future { 42 }
+//    while(!fut5.isCompleted){
+//      Thread.sleep(100)
+//    }
 //    println(5, fut5.value)
 //    println(5, fut5.value)
 //    println(5, fut5.value)
@@ -61,7 +66,7 @@ object ex32 {
 //    println(6, valid6.value)
 //    val invalid6 = for (res <- fut5 if res < 0) yield res
 //    println(6, invalid.value)
-
+//    Thread.sleep(100)
     val valid7 =
       fut5 collect { case res if res > 0 => res + 46 }
     println(7, valid7.value)
