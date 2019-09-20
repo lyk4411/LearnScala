@@ -14,12 +14,16 @@ object ReactiveSwingApp extends SimpleSwingApplication {
     val button = new Button {
       text = "Click me"
     }
+    val button1 = new Button {
+      text = "Click me too"
+    }
     val label = new Label {
       text = "No button clicks registered"
     }
     contents = new BoxPanel(Orientation.Vertical) {
       contents += button
       contents += label
+      contents += button1
       border = Swing.EmptyBorder(30, 30, 10, 30)
     }
     listenTo(button)
@@ -29,5 +33,7 @@ object ReactiveSwingApp extends SimpleSwingApplication {
         nClicks += 1
         label.text = "Number of button clicks: " + nClicks
     }
+    listenTo(button1)
+
   }
 }
