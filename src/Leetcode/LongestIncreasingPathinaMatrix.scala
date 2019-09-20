@@ -6,102 +6,101 @@ package Leetcode
   * Porject name: LearnScala
   */
 object LongestIncreasingPathinaMatrix {
-//  import scala.collection.mutable
-//  def longestIncreasingPath(matrix: Array[Array[Int]]): Int = {
-//    if (matrix.length == 0)
-//      return 0
-//    val ms = matrix.length
-//    val ns = matrix(0).length
-//    val maxAtCoordinate: mutable.Map[(Int, Int), Int] = mutable.Map[(Int, Int), Int]()
-//    var max: Int = 1
-//    for (m <- 0 until  ms) {
-//      for (n <- 0 until ns) {
-//        var len = dfs(matrix, m, n, ms, ns, maxAtCoordinate)
-//        max = Math.max(max, len)
-//      }
-//    }
-//    max
-//  }
-//
-//    def dfs(matrix: Array[Array[Int]], m:Int, n:Int, ms:Int, ns:Int, cache:mutable.Map[(Int, Int), Int]): Int ={
-//      val steps = Seq((-1, 0), (1, 0), (0, -1), (0, 1))
-//      if(cache.contains((m,n))) {
-//        cache((m, n))
-////        println(cache, cache((m, n)))
-//      }
-//      var max:Int = 1
-//      for(step <- steps)
-//      {
-//        val x = m + step._1
-//        val y = n + step._2
-//        if(x >= 0 &&
-//           y >= 0 &&
-//           x < matrix.length &&
-//           y < matrix(m).length)
-//        {
-//          if (matrix(m)(n) < matrix(x)(y)){
-//            val len = 1 + dfs(matrix, x, y, ms, ns, cache)
-//            max = Math.max(max, len)
-//          }
-//        }
-//      }
-//      cache((m, n)) = max
-//      max
-//    }
-
   import scala.collection.mutable
   def longestIncreasingPath(matrix: Array[Array[Int]]): Int = {
-    val maxAtCoordinate: mutable.Map[(Int, Int), Int] = mutable.Map[(Int, Int), Int]()
-
-    def longestIncreasingPath(row: Int, column: Int, previous: Int): Int = {
-      if (
-        row < 0 ||
-          column < 0 ||
-          row >= matrix.length ||
-          column >= matrix(row).length ||
-          previous >= matrix(row)(column)
-      ) 0
-      else {
-        maxAtCoordinate.getOrElse((row, column), {
-          val answers: Seq[Int] = for {
-            steps: (Int, Int) <- Seq(
-              (-1, 0),
-              (1, 0),
-              (0, -1),
-              (0, 1)
-            )
-            answer: Int = 1 + longestIncreasingPath(
-              row = row + steps._1,
-              column = column + steps._2,
-              previous = matrix(row)(column)
-            )
-          } yield answer
-
-          maxAtCoordinate((row, column)) = answers.max
-          maxAtCoordinate((row, column))
-        })
-      }
-    }
-
-    if (matrix.length == 0) 0
+    if (matrix.length == 0)
+       0
     else {
-      val startingSpots: Seq[(Int, Int)] = for {
-        row <- matrix.indices
-        column <- matrix(row).indices
-      } yield (row, column)
-
-      startingSpots
-        .map(coordinates => {
-          longestIncreasingPath(
-            row = coordinates._1,
-            column = coordinates._2,
-            previous = Int.MinValue
-          )
-        })
-        .max
+      val ms = matrix.length
+      val ns = matrix(0).length
+      val maxAtCoordinate: mutable.Map[(Int, Int), Int] = mutable.Map[(Int, Int), Int]()
+      var max: Int = 1
+      for (m <- 0 until ms) {
+        for (n <- 0 until ns) {
+          var len = dfs(matrix, m, n, ms, ns, maxAtCoordinate)
+          max = Math.max(max, len)
+        }
+      }
+      max
     }
   }
 
+    def dfs(matrix: Array[Array[Int]], m:Int, n:Int, ms:Int, ns:Int, cache:mutable.Map[(Int, Int), Int]): Int ={
+      val steps = Seq((-1, 0), (1, 0), (0, -1), (0, 1))
+      if(cache.contains((m,n))) {
+        cache((m, n))
+      } else {
+        var max: Int = 1
+        for (step <- steps) {
+          val x = m + step._1
+          val y = n + step._2
+          if (x >= 0 &&
+            y >= 0 &&
+            x < matrix.length &&
+            y < matrix(m).length) {
+            if (matrix(m)(n) < matrix(x)(y)) {
+              val len = 1 + dfs(matrix, x, y, ms, ns, cache)
+              max = Math.max(max, len)
+            }
+          }
+        }
+        cache((m, n)) = max
+        max
+      }
+    }
+
+//  import scala.collection.mutable
+//  def longestIncreasingPath(matrix: Array[Array[Int]]): Int = {
+//    val maxAtCoordinate: mutable.Map[(Int, Int), Int] = mutable.Map[(Int, Int), Int]()
+//
+//    def longestIncreasingPath(row: Int, column: Int, previous: Int): Int = {
+//      if (
+//        row < 0 ||
+//          column < 0 ||
+//          row >= matrix.length ||
+//          column >= matrix(row).length ||
+//          previous >= matrix(row)(column)
+//      ) 0
+//      else {
+//        maxAtCoordinate.getOrElse((row, column), {
+//          val answers: Seq[Int] = for {
+//            steps: (Int, Int) <- Seq(
+//              (-1, 0),
+//              (1, 0),
+//              (0, -1),
+//              (0, 1)
+//            )
+//            answer: Int = 1 + longestIncreasingPath(
+//              row = row + steps._1,
+//              column = column + steps._2,
+//              previous = matrix(row)(column)
+//            )
+//          } yield answer
+//
+//          maxAtCoordinate((row, column)) = answers.max
+//          maxAtCoordinate((row, column))
+//        })
+//      }
+//    }
+//
+//    if (matrix.length == 0) 0
+//    else {
+//      val startingSpots: Seq[(Int, Int)] = for {
+//        row <- matrix.indices
+//        column <- matrix(row).indices
+//      } yield (row, column)
+//
+//      startingSpots
+//        .map(coordinates => {
+//          longestIncreasingPath(
+//            row = coordinates._1,
+//            column = coordinates._2,
+//            previous = Int.MinValue
+//          )
+//        })
+//        .max
+//    }
+//  }
 
   def main(args: Array[String]) {
     val matrix1: Array[Array[Int]] = Array(Array(9,9,4),Array(6,6,8),Array(2,1,1))
