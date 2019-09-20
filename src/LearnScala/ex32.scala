@@ -79,8 +79,8 @@ object ex32 {
 //
     val failure = Future { 42 / 0 }
     failure onComplete {
-      case Success(a) => println(80, failure.value)
-      case Failure(a) => println(80, "futureList failure.")
+      case Success(b) => println(80, b, failure.value)
+      case Failure(a) => println(80, a, "futureList failure.")
     }
 //    println(80,  failure.value)
     val expectedFailure = failure.failed
@@ -117,8 +117,8 @@ object ex32 {
 //      Thread.sleep(100)
 //    }
     futureList onComplete {
-      case Success(res) => println(120, futureList.value)
-      case Failure(res) => println(121, "futureList failure.")
+      case Success(res) => println(120, res,  futureList.value)
+      case Failure(res) => println(121, res, "futureList failure.")
     }
     println(11, futureNums)
     println(12, futureList.value)
