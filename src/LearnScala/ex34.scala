@@ -29,8 +29,11 @@ object ReactiveSwingApp extends SimpleSwingApplication {
     listenTo(button)
     var nClicks = 0
     reactions += {
-      case ButtonClicked(b) =>
+      case ButtonClicked(`button`) =>
         nClicks += 1
+        label.text = "Number of button clicks: " + nClicks
+      case ButtonClicked(`button1`) =>
+        nClicks += 10
         label.text = "Number of button clicks: " + nClicks
     }
     listenTo(button1)
