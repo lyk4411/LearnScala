@@ -9,7 +9,11 @@ package LearnScala
 object HelloWorld {
   def main (args: Array[String] ) {
     println("hello world.")
-
+    println(Array().length)
+    val steps = Seq((-1, 0), (1, 0), (0, -1), (0, 1))
+    for(i<- steps){
+      println("(i, j)", i)
+    }
     import scala.io.Source
 
     if (args.length > 0) {
