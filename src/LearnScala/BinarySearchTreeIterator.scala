@@ -15,6 +15,7 @@ case class TreeNode(var _value: Int) {
   var right: TreeNode = null
 }
 class BinarySearchTreeIterator(_root: TreeNode) {
+
   val stack = {
     val nodeStack = new mutable.Stack[TreeNode]()
     var ptr:TreeNode = _root
