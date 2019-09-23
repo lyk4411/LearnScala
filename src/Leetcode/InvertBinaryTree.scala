@@ -45,5 +45,4 @@ object InvertBinaryTree {
       toptree + lefttree + righttree
     }
   }
-
 }
