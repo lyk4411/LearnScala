@@ -7,24 +7,25 @@ package LearnScala
   */
 object FindMinimuminRotatedSortedArray {
   def findMin(nums: Array[Int]): Int = {
-    if(nums == null || nums.length == 0)
-      return 0
-    if(nums.length == 1)
-      return nums(0)
-    var start:Int = 0
-    var end:Int = nums.length - 1
-    while(start < end){
-      var mid:Int = (start + end) / 2
-      if(mid > 0 && nums(mid) < nums(mid - 1)) {
-        return nums(mid)
-      }
-      if (nums(start) <= nums(mid) && nums(mid) > nums(end)) {
-        start = mid + 1;
-      } else {
-        end = mid - 1;
-      }
-    }
-    return nums(start);
+//    if(nums == null || nums.length == 0)
+//      return 0
+//    if(nums.length == 1)
+//      return nums(0)
+//    var start:Int = 0
+//    var end:Int = nums.length - 1
+//    while(start < end){
+//      var mid:Int = (start + end) / 2
+//      if(mid > 0 && nums(mid) < nums(mid - 1)) {
+//        return nums(mid)
+//      }
+//      if (nums(start) <= nums(mid) && nums(mid) > nums(end)) {
+//        start = mid + 1;
+//      } else {
+//        end = mid - 1;
+//      }
+//    }
+//    return nums(start);
+    nums.min
   }
 
   def main(args: Array[String]) {
