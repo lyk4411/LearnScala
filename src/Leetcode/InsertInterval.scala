@@ -30,7 +30,7 @@ class InsertInterval {
     var ivs: List[Interval] = List()
     for(interval <- intervals){
       val t = Interval(interval(0),interval(1))
-      ivs = ivs :::(List(t))
+      ivs = ivs :+t
     }
     val a:Interval = Interval(newInterval(0),newInterval(1))
 //    println("ivs:", ivs)
