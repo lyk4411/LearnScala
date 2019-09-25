@@ -26,6 +26,24 @@ class InsertInterval {
       }
     helper(intervals, List(), newInterval)
   }
+  def insert(intervals: Array[Array[Int]], newInterval: Array[Int]): Array[Array[Int]] = {
+    var ivs: List[Interval] = List()
+    for(interval <- intervals){
+      val t = Interval(interval(0),interval(1))
+      ivs = ivs :::(List(t))
+    }
+    val a:Interval = Interval(newInterval(0),newInterval(1))
+//    println("ivs:", ivs)
+    val results:List[Interval] = insert(ivs, a)
+//    println("results:", results)
+    var f:Array[Array[Int]] = Array()
+    for(result <- results){
+      import Array._
+      val t = Array(result.start, result.end)
+      f = concat(f, Array(t))
+    }
+    f
+  }
 }
 object InsertInterval {
   def main(args: Array[String]) {
@@ -41,5 +59,14 @@ object InsertInterval {
     var a1 = new InsertInterval
     var result1 = a1.insert(intervals1, newInterval1)
     println(result1)
+
+    var intervals2 = Array(Array(1,2),Array(3,5),
+      Array(6,7),Array(8,10),Array(12,16))
+    var newInterval2 = Array(4, 8)
+    var a2 = new InsertInterval
+    var result2 = a2.insert(intervals2, newInterval2)
+    for(i <- result2){
+      println(i.toList)
+    }
   }
 }
