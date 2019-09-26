@@ -17,8 +17,16 @@ class TrappingRainWater {
         val bottomHeight = height(stack.pop())
           if (!stack.isEmpty) {
             val leftHeight = height(stack.top)
+//            println("stack:", stack)
+//            println("  i, leftheight,", i, "  ", leftHeight)
+//            println("  i, stack.top,", i, "  ", stack.top)
+//            println("  i, bottomHeight,", i, "  ", bottomHeight)
+
             val width = i - stack.top - 1
+//            println("  i, width,", i, "  ", width)
+
             waterTrapped += width * (Math.min(leftHeight, height(i)) - bottomHeight)
+//            println("waterTrapped;", waterTrapped)
           }
       }
       stack.push(i)
