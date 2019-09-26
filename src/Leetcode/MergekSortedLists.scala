@@ -7,7 +7,8 @@ import scala.collection.mutable
   * Package name: Leetcode
   * Porject name: LearnScala
   */
-class ListNode(var _x: Int = 0) {
+
+case class ListNode(var _x: Int = 0) {
   var next: ListNode = null
   var x: Int = _x
   override def toString = {
@@ -16,6 +17,7 @@ class ListNode(var _x: Int = 0) {
   }
 }
 class MergekSortedLists {
+
   def mergeKLists(lists: Array[ListNode]): ListNode = {
     val pq = mutable.PriorityQueue.empty[ListNode](Ordering.by(n => n.x)).reverse
     val dummyNode = new ListNode(0)
