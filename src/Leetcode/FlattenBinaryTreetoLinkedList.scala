@@ -7,23 +7,19 @@ package Leetcode
   */
 class FlattenBinaryTreetoLinkedList {
   def flatten(root: TreeNode): Unit = {
-    if (root == null) null
-    else if (root.left == null) flatten(root.right)
-    else {
-      val currentLeft = root.left
-      val currentRight = root.right
-      val greatestLeftNode: TreeNode = getMax(currentLeft)
-
-      root.right = currentLeft
-      root.left = null
-      greatestLeftNode.right = currentRight
-      flatten(currentLeft)
-      flatten(currentRight)
+    if (root == null) return;
+    val res = preorderTraversal(root)
+    var node = root;
+    for (i <- 0 until res.length){
+      node.value = res(i);
+      node.left = null;
+      if (i+1 < res.length) node.right = new TreeNode(0)
+      node = node.right;
     }
   }
-  def getMax(root: TreeNode): TreeNode = {
-    if (root.right == null) root
-    else getMax(root.right)
+  def preorderTraversal(root: TreeNode): List[Int] = {
+    if (root == null) return Nil
+    List(root.value) ::: preorderTraversal(root.left) ::: preorderTraversal(root.right)
   }
 }
 object FlattenBinaryTreetoLinkedList {
