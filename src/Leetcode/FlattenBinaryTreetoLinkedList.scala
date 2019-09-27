@@ -40,6 +40,8 @@ object FlattenBinaryTreetoLinkedList {
     t2.right = t4
     t5.right = t6
     val a = new FlattenBinaryTreetoLinkedList
+    println(t1)
     println(a.flatten(t1))
+    println(t1)
   }
 }

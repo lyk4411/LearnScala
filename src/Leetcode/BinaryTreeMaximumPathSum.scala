@@ -13,8 +13,8 @@ case class TreeNode(var _value: Int) {
   override def toString = {
     var l = new String
     var r = new String
-    if(left != null) {l = left.toString} else { l = " "}
-    if(right != null) {r = right.toString} else { r = " "}
+    if(left != null) {l = left.toString} else { l = " # "}
+    if(right != null) {r = right.toString} else { r = " # "}
     value.toString + l + r
   }
 }
