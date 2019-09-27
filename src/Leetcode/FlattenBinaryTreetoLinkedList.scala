@@ -41,7 +41,7 @@ object FlattenBinaryTreetoLinkedList {
     t5.right = t6
     val a = new FlattenBinaryTreetoLinkedList
     println(t1)
-    println(a.flatten(t1))
+    a.flatten(t1)
     println(t1)
   }
 }
