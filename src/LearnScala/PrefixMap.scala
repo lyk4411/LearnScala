@@ -75,9 +75,25 @@ object PrefixMap {
     val m = PrefixMap("abc" -> 0, "abd" -> 1, "al" -> 2,
       "all" -> 3, "xy" -> 4)
     println(m withPrefix "a")
-    println(m.values)
-    println((m withPrefix "a").values)
-    println((m withPrefix "al").values)
+    println(m.value)
+    println((m withPrefix "a").value)
+    println((m withPrefix "al").value)
+    println((m withPrefix "all").value)
+    println((m withPrefix "alx").value)
+    println( for(v <- m.value.iterator) yield("", v))
+    println((for ((chr, ma) <- m.suffixes.iterator) yield (chr, ma)).toList)
+    println("=====================")
+
+    val a = PrefixMap("abc" -> 0, "abd" -> 1, "al" -> 2,
+      "all" -> 3, "xy" -> 4)
+    println((for (v <- a.value.iterator) yield ("", v)).toList ++
+              (for ((chr, m) <- a.suffixes.iterator;
+                (s, v) <- m.iterator) yield (chr +: s, v)).toList)
+    println("=====================")
+    println(
+      (for ((chr, m) <- a.suffixes.iterator;
+            (s, v) <- m.iterator) yield (chr +: s, v)).toList)
+    println("=====================")
 
     var res0 = PrefixMap("hello" -> 5, "hi" -> 2)
     println("res0:", res0)
