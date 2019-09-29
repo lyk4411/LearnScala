@@ -75,6 +75,9 @@ object PrefixMap {
     val m = PrefixMap("abc" -> 0, "abd" -> 1, "al" -> 2,
       "all" -> 3, "xy" -> 4)
     println(m withPrefix "a")
+    println(m.values)
+    println((m withPrefix "a").values)
+    println((m withPrefix "al").values)
 
     var res0 = PrefixMap("hello" -> 5, "hi" -> 2)
     println("res0:", res0)
