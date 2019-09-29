@@ -99,5 +99,6 @@ object PrefixMap {
     println("res0:", res0)
     PrefixMap.empty[String]
     println(res0 map { case (k, v) => (k + "!", "x" * v) })
+    println((res0 map { case (k, v) => (k + "!", "x" * v) }).getClass)
   }
 }
