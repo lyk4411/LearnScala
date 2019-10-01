@@ -76,6 +76,8 @@ object PrefixMap {
       "all" -> 3, "xy" -> 4)
     println(m withPrefix "a")
     println(m.value)
+    println(m.values)
+
     println((m withPrefix "a").value)
     println((m withPrefix "al").value)
     println((m withPrefix "all").value)
