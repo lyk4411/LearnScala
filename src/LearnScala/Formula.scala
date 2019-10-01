@@ -22,7 +22,6 @@ case class Textual(value: String) extends Formula {
 }
 case class Application(function: String,
                        arguments: List[Formula]) extends Formula {
-
   override def toString =
     function + arguments.mkString("(", ",", ")")
 }
