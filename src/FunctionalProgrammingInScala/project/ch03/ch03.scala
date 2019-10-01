@@ -16,6 +16,8 @@ object ch03 {
     val a = ch03
     val b = List(1,2,3,4,5,6,7,8)
     println(b)
+    println(a.dropWhile(b)(_%2==1))
+    println(a.dropWhile(b)(_%2==0))
     println(a.dropWhile(b)(_<4))
   }
 }
