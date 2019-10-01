@@ -1,4 +1,4 @@
-package FunctionalProgrammingInScala.project
+package FunctionalProgrammingInScala.project.ch03
 
 sealed trait Tree[+A]
 case class Leaf[A](value: A) extends Tree[A]

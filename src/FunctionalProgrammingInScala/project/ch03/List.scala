@@ -1,4 +1,4 @@
-package FunctionalProgrammingInScala.project
+package FunctionalProgrammingInScala.project.ch03
 
 sealed trait List[+A] // `List` data type, parameterized on a type, `A`
 case object Nil extends List[Nothing] // A `List` data constructor representing the empty list

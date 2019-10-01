@@ -1,4 +1,4 @@
-package FunctionalProgrammingInScala.project
+package FunctionalProgrammingInScala.project.ch03
 
 /**
   * Created by lyk on 2019-10-1.
