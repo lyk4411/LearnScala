@@ -73,7 +73,8 @@ trait Stream[+A] {
     case _ => empty
   }
 
-  def foldRight[B](z: => B)(f: (A, => B) => B): B = // The arrow `=>` in front of the argument type `B` means that the function `f` takes its second argument by name and may choose not to evaluate it.
+  def foldRight[B](z: => B)(f: (A, => B) => B): B = // The arrow `=>` in front of the argument type `B`
+  // means that the function `f` takes its second argument by name and may choose not to evaluate it.
     this match {
       case Cons(h,t) => f(h(), t().foldRight(z)(f)) // If `f` doesn't evaluate its second argument, the recursion never occurs.
       case _ => z
@@ -254,4 +255,12 @@ object Stream {
 
   // could also of course be implemented as constant(1)
   val onesViaUnfold = unfold(1)(_ => Some((1,1)))
+}
+
+object testStream {
+  def main(args: Array[String]) {
+    println(fibs.take(5).toList)
+    println(from(5).take(5).toList)
+    println(ones.take(5).toList)
+  }
 }
