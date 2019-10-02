@@ -31,6 +31,8 @@ object List { // `List` companion object. Contains functions for creating and wo
     case _ => 101
   }
 
+
+
   def append[A](a1: List[A], a2: List[A]): List[A] =
     a1 match {
       case Nil => a2
@@ -323,5 +325,12 @@ object List { // `List` companion object. Contains functions for creating and wo
     case Nil => sub == Nil
     case _ if startsWith(sup, sub) => true
     case Cons(h,t) => hasSubsequence(t, sub)
+  }
+}
+object testList {
+  def main(args: Array[String]) {
+    var a = List
+    println("aaaaaa")
+    println(a.x)
   }
 }
