@@ -243,6 +243,16 @@ object Candy {
     _ <- sequence(inputs map (modify[Machine] _ compose update))
     s <- get
   } yield (s.coins, s.candies)
+
+  def main(args: Array[String]) {
+    var machine= Machine(true, 5, 10)
+
+    val b= Candy.simulateMachine(List(new Input {Coin},
+      new Input {Turn}, new Input {Coin}, new Input {Turn}))
+    println(b)
+    println(machine)
+  }
+
 }
 
 object testState {
