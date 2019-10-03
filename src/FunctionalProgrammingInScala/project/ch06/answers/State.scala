@@ -130,6 +130,9 @@ object RNG {
   // to use `foldLeft` followed by `reverse`. What do you think?
   def sequence[A](fs: List[Rand[A]]): Rand[List[A]] =
     fs.foldRight(unit(List[A]()))((f, acc) => map2(f, acc)(_ :: _))
+//  def unit[A](a: A): Rand[A] = rng => (a, rng)
+//  var b :RNG.Rand[List[Int]] = RNG unit List(11, 12)
+//  var c :RNG.Rand[List[RNG.Rand[Int]]] = RNG unit List(RNG.it)
 
   // It's interesting that we never actually need to talk about the `RNG` value
   // in `sequence`. This is a strong hint that we could make this function
@@ -150,12 +153,13 @@ object RNG {
       if (i + (n-1) - mod >= 0) unit(mod) else nonNegativeLessThan(n)
     }
   }
+//  def unit[A](a: A): Rand[A] = rng => (a, rng)
 
   def _map[A,B](s: Rand[A])(f: A => B): Rand[B] =
     flatMap(s)(a => unit(f(a)))
 
   def _map2[A,B,C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] =
-    flatMap(ra)(a => map(rb)(b => f(a, b)))
+    flatMap(ra)(a => _map(rb)(b => f(a, b)))
 }
 
 import State._
@@ -210,6 +214,9 @@ object State {
   } yield ()
 
   def get[S]: State[S, S] = State(s => (s, s))
+//  type Rand[A] = State[RNG, A]
+//  def unit[S, A](a: A): State[S, A] = State(s => (a, s))
+//  type Rand[+A] = RNG => (A, RNG)
 
   def set[S](s: S): State[S, Unit] = State(_ => ((), s))
 }
@@ -241,6 +248,8 @@ object Candy {
 object testState {
   def main(args: Array[String]) {
     var a :RNG.Rand[Int] = RNG unit 11
+    var b :RNG.Rand[List[Int]] = RNG unit List(11, 12)
+    var c :RNG.Rand[List[RNG.Rand[Int]]] = RNG unit List(RNG.it)
 
     println(a)
   }
