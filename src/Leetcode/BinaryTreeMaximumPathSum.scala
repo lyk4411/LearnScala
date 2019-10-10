@@ -11,11 +11,12 @@ case class TreeNode(var _value: Int) {
     var left: TreeNode = null
     var right: TreeNode = null
   override def toString = {
-    var l = new String
-    var r = new String
-    if(left != null) {l = left.toString} else { l = " # "}
-    if(right != null) {r = right.toString} else { r = " # "}
-    value.toString + l + r
+    value.toString
+//    var l = new String
+//    var r = new String
+//    if(left != null) {l = left.toString} else { l = " # "}
+//    if(right != null) {r = right.toString} else { r = " # "}
+//    value.toString + l + r
   }
 }
 class BinaryTreeMaximumPathSum {
