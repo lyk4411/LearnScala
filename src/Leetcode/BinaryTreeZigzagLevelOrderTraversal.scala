@@ -11,12 +11,13 @@ class BinaryTreeZigzagLevelOrderTraversal {
     def helper(current: List[TreeNode], res: List[List[Int]], leftToRight: Boolean): List[List[Int]] = {
       if (current.isEmpty) res
       else {
-        val next = current.foldLeft(List.empty[TreeNode]) { case (list, node) =>
-          if (node.left == null && node.right == null) list
-          else if (node.left == null) node.right :: list
-          else if (node.right == null) node.left :: list
-          else if (leftToRight) node.right :: node.left :: list
-          else node.left :: node.right :: list
+        val next = current.foldLeft(List.empty[TreeNode]) {
+          case (list, node) =>
+            if (node.left == null && node.right == null) list
+            else if (node.left == null) node.right :: list
+            else if (node.right == null) node.left :: list
+            else if (leftToRight) node.right :: node.left :: list
+            else node.left :: node.right :: list
         }
 
         helper(next, res :+ current.map(_.value), !leftToRight)
