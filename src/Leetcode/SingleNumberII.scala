@@ -10,7 +10,8 @@ class SingleNumberII {
     val once = scala.collection.mutable.Set.empty[Int]
     val multi = scala.collection.mutable.Set.empty[Int]
 
-    nums.foreach { num =>
+    nums.foreach {
+      num =>
       (once(num), multi(num)) match {
         case (false, false) => once.add(num) // first time seen
         case (true, false) => // second time seen
