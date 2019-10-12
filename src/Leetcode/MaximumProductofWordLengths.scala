@@ -12,7 +12,10 @@ class MaximumProductofWordLengths {
     // loop
     var res = 0
     val sets = words.map(_.toSet)
-    for (i <- words.indices)
+//    println(sets.toList)
+//    println(words.indices)
+//    println(words.length)
+    for (i <- 0 until words.length)
       for (j <- i + 1 until words.length) {
         if ((sets(i) & sets(j)).isEmpty) {
           res = math.max(res, words(i).length * words(j).length)
