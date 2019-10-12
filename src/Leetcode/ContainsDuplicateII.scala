@@ -16,6 +16,10 @@ class ContainsDuplicateII {
           case _ => false
         }.exists(identity)
 
+//    println(nums.zipWithIndex.toList)
+//    nums.zipWithIndex.groupBy(_._1).foreach(n => println(n._2.toList))
+//    nums.zipWithIndex.groupBy(_._1).values.foreach(n => println(n.toList))
+//    nums.zipWithIndex.groupBy(_._1).values.map(v => v.unzip).foreach(x => println(x._1.toList, x._2.toList))
     nums
       .zipWithIndex
       .groupBy(_._1) // use `HashMap` implicitly: value to indices map
@@ -28,8 +32,8 @@ object ContainsDuplicateII {
   def main(args: Array[String]) {
     val a = new ContainsDuplicateII
     println(a.containsNearbyDuplicate(Array(1,2,3,1),3))
-    println(a.containsNearbyDuplicate(Array(1,2,3,1,2,3),2))
-    println(a.containsNearbyDuplicate(Array(1,0,1,1),1))
+//    println(a.containsNearbyDuplicate(Array(1,2,3,1,2,3),2))
+//    println(a.containsNearbyDuplicate(Array(1,0,1,1),1))
   }
 }
 
