@@ -40,5 +40,6 @@ object PalindromePartitioning {
   def main(args: Array[String]) {
     val a = new PalindromePartitioning
     println((a.partition("aab")))
+    println((a.partition("aaab")))
   }
 }
