@@ -7,10 +7,10 @@ package Leetcode
   */
 class PalindromePartitioning {
   def partition(s: String): List[List[String]] = {
-    partition(s, s.length - 1)
+    help(s, s.length - 1)
   }
 
-  def partition(s: String, right: Int): List[List[String]] = {
+  def help(s: String, right: Int): List[List[String]] = {
     if (right < 0) List.empty
     else {
       val subString = s.substring(0, right + 1)
@@ -20,12 +20,12 @@ class PalindromePartitioning {
 //        println("s", s)
 
         if (remaining != "") {
-          partition(remaining).map(list => subString +: list) ++ partition(s, right - 1)
+          partition(remaining).map(list => subString +: list) ++ help(s, right - 1)
         } else {
-          List(List(subString)) ++ partition(s, right - 1)
+          List(List(subString)) ++ help(s, right - 1)
         }
       } else {
-        partition(s, right - 1)
+        help(s, right - 1)
       }
     }
   }
