@@ -17,6 +17,7 @@ class PalindromePartitioning {
 
       if (isPalindrome(subString)) {
         val remaining: String = s.drop(subString.length)
+//        println("s", s)
 
         if (remaining != "") {
           partition(remaining).map(list => subString +: list) ++ partition(s, right - 1)
