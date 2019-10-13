@@ -42,7 +42,6 @@ object PalindromePartitioning {
     println((a.partition("aab")))
     println((a.partition("aaab")))
     println((a.partition("abb")))
-
     //    println(List(List(4,5,6)) ++ List(List(1,2,3)))
   }
 }
