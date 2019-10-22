@@ -7,6 +7,7 @@ package Leetcode
   */
 class MajorityElement {
   def majorityElement(nums: Array[Int]): Int = {
+    println(nums.groupBy(x => x).mapValues(_.size).maxBy(_._2))
     nums.groupBy(x => x).mapValues(_.size).maxBy(_._2)._1
   }
 }
