@@ -24,7 +24,7 @@ class CombinationSumIII {
         answers.put((_k, _n), all)
       })
     })
-//    println(answers)
+    println(answers)
     return answers((k, n))
   }
 }
