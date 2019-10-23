@@ -16,8 +16,7 @@ class KthLargestElementinanArray {
 //    pq.dequeue
 //  }
     def findKthLargest(nums: Array[Int], k: Int): Int = {
-      nums
-        .drop(k)
+        nums.drop(k)
         .foldLeft(nums.take(k).sorted)((sortedList, current) => {
           if (current > sortedList.head) (sortedList.drop(1) :+ current).sorted
           else sortedList
@@ -30,5 +29,6 @@ object KthLargestElementinanArray {
     val a = new KthLargestElementinanArray
     println(a.findKthLargest(Array(3,2,1,5,6,4), 2))
     println(a.findKthLargest(Array(3,2,3,1,2,4,5,5,6), 5))
+    println(a.findKthLargest(Array(2,1), 2))
   }
 }
