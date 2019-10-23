@@ -13,7 +13,8 @@ object SingleNumber {
     val a = new SingleNumber
     println(a.singleNumber(Array(2,2,1)))
     println(a.singleNumber(Array(4,1,2,1,2)))
-    println(Array(2,2,1).groupBy(x => x).values.toList)
-    println(Array(2,2,1).groupBy(x => x).keys.toList)
+    println(Array(4,1,2,1,2).groupBy(x => x).map(n => n._2.length))
+    println(Array(4,1,2,1,2).groupBy(x => x).map(_._2.length))
+    println(Array(4,1,2,1,2).groupBy(x => x).keys.toList)
   }
 }
