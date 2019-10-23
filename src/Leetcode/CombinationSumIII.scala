@@ -9,7 +9,7 @@ class CombinationSumIII {
   def combinationSum3(k: Int, n: Int): List[List[Int]] = {
     val answers = scala.collection.mutable.Map[(Int, Int), List[List[Int]]]()
     answers ++= (1 to n).map(i => ((1, i), List(List(i)))).toMap
-    println(answers)
+//    println(answers)
     (2 to k).foreach(_k => {
       (1 to n).foreach(_n => {
         val all = (1 until _n).flatMap(m => {
@@ -32,5 +32,7 @@ object CombinationSumIII {
     val a = new CombinationSumIII
     println(a.combinationSum3(3, 7))
     println(a.combinationSum3(3, 9))
+    println(a.combinationSum3(2, 18))
+    //    val answers = scala.collection.mutable.Map[(Int, Int), List[List[Int]]]()
   }
 }
