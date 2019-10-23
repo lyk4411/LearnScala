@@ -21,7 +21,7 @@ object PathSumII {
   def main(args: Array[String]) {
     val t1 = TreeNode(5)
     val t2 = TreeNode(4)
-    val t3 = TreeNode(5)
+    val t3 = TreeNode(8)
     val t4 = TreeNode(11)
     val t5 = TreeNode(13)
     val t6 = TreeNode(4)
@@ -40,5 +40,9 @@ object PathSumII {
     t6.right = t10
     val a = new PathSumII
     println(a.pathSum(t1, 22))
+//    println(List(List(1))::: List(List(2)) ::: List())
+//    println(List()::: List()::: List())
+//    println(List(List(1)).map(2::_))
+//    println(List()::: List(List(1)))
   }
 }
