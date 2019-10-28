@@ -7,18 +7,24 @@ package Leetcode
   */
 class UniquePaths {
   def uniquePaths(m: Int, n: Int): Int = {
-    if (m <= 0 || n <= 0) {
-      return 0
-    }
-    val rst = Array.fill[Int](m+1)(0)
-    for (j <- 0 until n; i <- 1 to m) {
-      if (j == 0 && i == 1) {
-        rst(i) = 1
+    import scala.collection.mutable
+    val map = mutable.Map.empty[(Int, Int), Int]
+    def rec(m: Int, n: Int): Int = {
+      if (map.get((m, n)).isDefined) {
+        map((m, n))
       } else {
-        rst(i) = rst(i-1) + rst(i)
+        if (m == 1)
+          1
+        else if (n == 1)
+          1
+        else {
+          val c = rec(m - 1, n) + rec(m, n - 1)
+          map += (((m, n), c))
+          c
+        }
       }
     }
-    return rst(m)
+    rec(m, n)
   }
 }
 object UniquePaths {
