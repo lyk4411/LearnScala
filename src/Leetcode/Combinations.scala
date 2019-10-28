@@ -7,7 +7,7 @@ package Leetcode
   */
 class Combinations {
   def combine(n: Int, k: Int): List[List[Int]] = {
-//    println("map:", (1 to n).toList.map(List(_)))
+    println("map:", (1 to n).toList.map(List(_)))
     (2 to k).foldLeft{
       (1 to n).toList.map(List(_))
     }{ (acc, _) =>
