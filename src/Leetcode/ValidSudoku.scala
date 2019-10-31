@@ -25,6 +25,22 @@ class ValidSudoku {
     val set = new scala.collection.mutable.HashSet[T]()
     !a.forall(set.add)
   }
+
+//  def initHM() = (0 to 8).map((_, scala.collection.mutable.Set.empty[Char])).toMap
+//  def isValidSudoku(board: Array[Array[Char]]): Boolean = {
+//    val rowHM = initHM()
+//    val colHM = initHM()
+//    val boxHM = initHM()
+//    (0 to 8).foreach { rowIdx =>
+//      (0 to 8).collect { case colIdx if board(rowIdx)(colIdx) != '.' =>
+//        val num = board(rowIdx)(colIdx)
+//        val boxNum = ((rowIdx / 3) * 3)  + ((colIdx) / 3)
+//
+//        if (!rowHM(rowIdx).add(num) || !colHM(colIdx).add(num) || !boxHM(boxNum).add(num)) return false
+//      }
+//    }
+//    true
+//  }
 }
 object ValidSudoku {
   def main(args: Array[String]) {
