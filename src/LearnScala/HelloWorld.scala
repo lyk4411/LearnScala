@@ -13,7 +13,7 @@ object HelloWorld {
       case 2 | 4 | 6 | 8 | 10 => println("even")
     }
     evenOrOdd(2)
-
+    println(identity())
     println("hello world.")
     println(Array().length)
     val steps = Seq((-1, 0), (1, 0), (0, -1), (0, 1))
