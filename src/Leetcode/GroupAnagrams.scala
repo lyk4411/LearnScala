@@ -7,6 +7,8 @@ package Leetcode
   */
 class GroupAnagrams {
   def groupAnagrams(strs: Array[String]): List[List[String]] = {
+//    println(strs.groupBy(_.sorted))
+//    println(strs.groupBy(_.sorted).values.map(_.toList))
     strs.groupBy(_.sorted).values.map(_.toList).toList
   }
 }
