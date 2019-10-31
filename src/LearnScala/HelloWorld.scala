@@ -8,6 +8,12 @@ package LearnScala
   */
 object HelloWorld {
   def main (args: Array[String] ) {
+    def evenOrOdd(i: Int) = i match {
+      case 1 | 3 | 5 | 7 | 9 => println("odd")
+      case 2 | 4 | 6 | 8 | 10 => println("even")
+    }
+    evenOrOdd(2)
+
     println("hello world.")
     println(Array().length)
     val steps = Seq((-1, 0), (1, 0), (0, -1), (0, 1))
