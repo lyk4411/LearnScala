@@ -4,6 +4,8 @@ package Leetcode
   * Created by lyk on 2019-10-31.
   * Package name: Leetcode
   * Porject name: LearnScala
+  *
+  * So coooooooooooooooooooooooooooooooooooooooooool.
   */
 class CombinationSum {
   def combinationSum(candidates: Array[Int], target: Int): List[List[Int]] = {
