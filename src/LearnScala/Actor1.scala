@@ -17,7 +17,7 @@ class Actor1 extends Actor {
           println("i sava msg ! = "+ msg.msg)
           msg.actor ! "i love you too !"
         }
-        case msg :String => println(msg)
+        case msg :String => println("Actor1 another msg:" +  msg)
         case  _ => println("default msg!")
       }
     }

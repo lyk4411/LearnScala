@@ -14,7 +14,7 @@ class Actor2(actor :Actor) extends Actor {
       receive {
         case msg :String => {
           if(msg.equals("i love you too !")) {
-            println(msg)
+            println("Actor2: " + msg)
             actor! "could we have a date !"
           }
         }
