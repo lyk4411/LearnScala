@@ -16,7 +16,6 @@ class CombinationSum {
           case x :: xs => combAcc(x :: xs, left - x, x :: acc) ::: combAcc(xs, left, acc)
         }
       }
-
     combAcc(candidates.toList, target, Nil)
   }
 }
