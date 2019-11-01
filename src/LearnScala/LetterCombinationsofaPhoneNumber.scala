@@ -21,12 +21,12 @@ class LetterCombinationsofaPhoneNumber {
       "9" -> List("w", "x", "y", "z"))
     letterCombinations(digits_map, digits, "")
   }
-  def letterCombinations(digits_map: Map[String, List[String]], digits: String, curr_string: String) : List[String] = {
+  def letterCombinations(digits_map: Map[String, List[String]], digits: String, curr_string: String) :
+      List[String] = {
     if(digits.length == 0){
       return List(curr_string)
     } else {
       var all_combinations: List[String] = List()
-
       for(digit <- digits_map(digits.charAt(0).toString)){
         val single_combination = letterCombinations(digits_map, digits.substring(1), curr_string.concat(digit.toString))
         all_combinations = List.concat(all_combinations, single_combination)
