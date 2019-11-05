@@ -1,1 +1,0 @@
-libraryDependencies += "edu.berkeley.cs" %% "chisel3" % "3.1.2"
