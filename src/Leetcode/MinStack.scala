@@ -41,7 +41,13 @@ class MinStack {
 }
 object MinStack {
   def main(args: Array[String]) {
-    val a = new MinStack
-
+    val minStack = new MinStack
+    minStack.push(-2)
+    minStack.push(0)
+    minStack.push(-3)
+    println(minStack.getMin())
+    println(minStack.pop())
+    println(minStack.top())
+    println(minStack.getMin())
   }
 }
