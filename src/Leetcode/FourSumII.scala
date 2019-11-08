@@ -10,6 +10,7 @@ class FourSumII {
     val sumAB = for (a <- A; b <- B) yield (a + b)
 //    sumAB.foreach(println)
 //    sumAB.groupBy(r => r).values.foreach(n => println(n.toList))
+//    println(sumAB)
     val sumToCntAB = sumAB.groupBy(r => r).map {
       case (s: Int, arr: Array[Int]) => (s, arr.size)
     }.toMap
