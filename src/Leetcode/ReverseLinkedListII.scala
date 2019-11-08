@@ -7,32 +7,32 @@ package Leetcode
   */
 class ReverseLinkedListII {
   def reverseBetween(head: ListNode, m: Int, n: Int): ListNode = {
-    if (head == null || head.next == null) {
-      head
-    } else {
-      val dump = new ListNode(0)
-      dump.next = head
-      var prev = dump
-      var p0 = head
-      for (i <- 1 until m) {
-        prev = p0
-        p0 = p0.next
+    if (head == null || head.next == null || m == n) return head
+
+    val dummyHead = new ListNode()
+    dummyHead.next = head
+
+    def locateFrontNode(): ListNode = {
+      var ptr = dummyHead
+      var step = 0
+      for (step <- 0 to m - 2) {
+        ptr = ptr.next
       }
-      if (p0 == null) {
-        return head
-      }
-      var p1 = p0.next
-      var p2: ListNode = null
-      (m until n).iterator.takeWhile(_ => p1 != null).foreach(_ => {
-        p2 = p1.next
-        p1.next = p0
-        p0 = p1
-        p1 = p2
-      })
-      prev.next.next = p1
-      prev.next = p0
-      dump.next
+      ptr
     }
+
+    val front = locateFrontNode() // The mth node in list.
+    val reversedTail = front.next // The tail node of reversed list.
+    var toInsert = front.next.next // The next node to insert.
+
+    for (i <- 0 to n - m - 1) {
+      val nextToInsert = toInsert.next
+      toInsert.next = front.next
+      front.next = toInsert
+      reversedTail.next = nextToInsert
+      toInsert = nextToInsert
+    }
+    dummyHead.next
   }
 }
 object ReverseLinkedListII {
@@ -47,6 +47,6 @@ object ReverseLinkedListII {
     l3.next = l4
     l4.next = l5
     val a = new ReverseLinkedListII
-    println(a.reverseBetween(l1, 2, 4))
+    println(a.reverseBetween(l1, 1, 4))
   }
 }
