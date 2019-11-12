@@ -16,13 +16,10 @@ class QueueReconstructionbyHeight {
       val temp = result.splitAt(pp(i)(1) * 2)
       result = temp._1 ++ pp(i) ++ temp._2
     }
-    var resultarray = result.toArray
-    var r : Array[Array[Int]] = new Array[Array[Int]](people.length)
+    val resultarray = result.toArray
+    val r : Array[Array[Int]] = new Array[Array[Int]](people.length)
     for(i <- 0 until people.length){
-      val t = new Array[Int](2)
-      t(0) = resultarray(i * 2).toString.toInt
-      t(1) = resultarray(i * 2 + 1).toString.toInt
-      r(i) = t
+      r(i) = Array(resultarray(i * 2).toString.toInt, resultarray(i * 2 + 1).toString.toInt)
    }
     r
   }
