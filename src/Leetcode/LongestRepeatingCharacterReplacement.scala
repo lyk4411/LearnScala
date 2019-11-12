@@ -19,7 +19,6 @@ class LongestRepeatingCharacterReplacement {
       var needChange = q.length - (if(count.nonEmpty) {count.values.max} else {0})
       if(needChange > k) {
         count(q.dequeue()) -= 1
-        needChange = q.length - (if(count.nonEmpty) {count.values.max} else {0})
       }
       max = Math.max(max, q.length)
     }
