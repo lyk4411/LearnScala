@@ -15,7 +15,10 @@ class LongestIncreasingSubsequence {
       if(v(mi) < x) lowerBound(v, x, mi, hi)
       else lowerBound(v, x, lo, mi)
     }
-
+//    println(nums.foldLeft(vc)((v, x) => {
+//      if(x > v.last) v :+ x
+//      else v.updated(lowerBound(v, x, 0, v.length), x)
+//    }))
     nums.foldLeft(vc)((v, x) => {
       if(x > v.last) v :+ x
       else v.updated(lowerBound(v, x, 0, v.length), x)
