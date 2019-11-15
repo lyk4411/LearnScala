@@ -8,22 +8,12 @@ package Leetcode
 class UniqueSubstringsinWraparoundString {
   def findSubstringInWraproundString(p: String): Int = {
     val arr = Array.fill(26)(0)
-    var startI = 0
-    var lastC = '0' //does not matter
-    for (i <- 0 until p.length) {
-      val c = p.charAt(i)
-      if (i > 0 && (c - lastC == 1 || c - lastC == -25)) {
-        for (j <- startI until i) {
-          val id = p.charAt(j) - 'a'
-          val len = i - j + 1
-          if (arr(id) < len) arr(id) = len
-        }
-      }
-      else {
-        startI = i
-      }
-      if (arr(c - 'a') < 1) arr(c - 'a') = 1
-      lastC = c
+    var maxLengthCur = 0
+    for (i <- 0 until p.length){
+      if(i > 0 && (p.charAt(i) - p.charAt(i - 1) == 1 || p.charAt(i - 1) - p.charAt(i) == 25)) maxLengthCur += 1
+      else  maxLengthCur = 1
+      val index = p.charAt(i) - 'a'
+      arr(index) = Math.max(arr(index), maxLengthCur)
     }
     arr.sum
   }
