@@ -10,7 +10,7 @@ class TotalHammingDistance {
     (0 to 31)
       .map(i =>
         nums.fold(0)((b, c) => b + (c>>i & 1)))
-      .fold(0)((d, f) => d + f*(nums.size-f))
+      .foldLeft(0)((d, f) => d + f*(nums.size-f))
 }
 object TotalHammingDistance {
   def main(args: Array[String]) {
