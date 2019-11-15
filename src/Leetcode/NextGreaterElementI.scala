@@ -13,8 +13,8 @@ class NextGreaterElementI {
     val stack = mutable.Stack[Int]()
     var arr = Array.empty[Int]
     for (num <- nums) {
-      if (stack.nonEmpty && num > stack.top) {
-        map += stack.top -> num
+      while (stack.nonEmpty && num > stack.top) {
+        map += stack.pop -> num
       }
       stack.push(num)
     }
@@ -30,5 +30,7 @@ object NextGreaterElementI {
     a.nextGreaterElement(Array(4,1,2), Array(1,3,4,2)).foreach(n => print(n, " "))
     println
     a.nextGreaterElement(Array(2, 4), Array(1,2,3,4)).foreach(n => print(n, " "))
+    println
+    a.nextGreaterElement(Array(1,3,5,2,4), Array(6,5,4,3,2,1,7)).foreach(n => print(n, " "))
   }
 }
